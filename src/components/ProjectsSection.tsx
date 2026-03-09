@@ -1,87 +1,66 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
 import projectBakery from "@/assets/project-bakery.jpg";
 import projectJuice from "@/assets/project-juice.jpg";
 import projectPotato from "@/assets/project-potato.jpg";
 import heroBakery from "@/assets/hero-bakery.jpg";
-import heroRestaurant from "@/assets/hero-restaurant.jpg";
 
 const projects = [
-  { image: projectBakery, category: "Bakery Equipment", title: "Bakery Equipment Installation — NYS Gilgil" },
-  { image: projectPotato, category: "Vegetable Processing", title: "Sweet Potato Processing Plant — Meru" },
-  { image: projectJuice, category: "Juice Processing", title: "Juice Processing Plant — University of Nairobi" },
-  { image: heroBakery, category: "Bakery Equipment", title: "Kitui Mango Processing Plant" },
-  { image: heroRestaurant, category: "Bakery Equipment", title: "Bakery Equipment for DPL Festive" },
+  { image: projectBakery, cat: "Bakery", title: "NYS GILGIL INSTALLATION", size: "large" },
+  { image: projectPotato, cat: "Processing", title: "SWEET POTATO PLANT — MERU", size: "small" },
+  { image: projectJuice, cat: "Juice", title: "UON JUICE PROCESSING", size: "small" },
+  { image: heroBakery, cat: "Bakery", title: "DPL FESTIVE EQUIPMENT", size: "large" },
 ];
 
 const ProjectsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" className="section-padding" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" ref={ref} className="section-padding">
+      <div className="max-w-[1600px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          className="flex items-center gap-4 mb-6"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-widest">Projects</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-foreground">
-            Select Projects Installed
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg">
-            A showcase of our successful installations across East Africa over the years.
-          </p>
+          <span className="h-px w-12 bg-primary" />
+          <span className="text-primary text-xs uppercase tracking-[0.3em]">Projects</span>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.slice(0, 3).map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <span className="text-primary text-xs font-semibold uppercase tracking-wider">{project.category}</span>
-                <h3 className="font-heading text-lg font-bold text-primary-foreground mt-1">{project.title}</h3>
-                <div className="flex items-center gap-1 text-primary-foreground/70 text-sm mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  View Project <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="font-heading text-5xl md:text-7xl text-foreground mb-20"
+        >
+          SELECTED<br />INSTALLATIONS
+        </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-6">
-          {projects.slice(3).map((project, i) => (
+        <div className="grid md:grid-cols-2 gap-4">
+          {projects.map((p, i) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.5 + i * 0.15, duration: 0.6 }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[16/9]"
+              key={p.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.15, duration: 0.7 }}
+              className={`group relative overflow-hidden cursor-pointer ${
+                p.size === "large" ? "aspect-[4/3]" : "aspect-square"
+              }`}
             >
               <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src={p.image}
+                alt={p.title}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <span className="text-primary text-xs font-semibold uppercase tracking-wider">{project.category}</span>
-                <h3 className="font-heading text-lg font-bold text-primary-foreground mt-1">{project.title}</h3>
+              <div className="absolute inset-0 bg-background/60 group-hover:bg-background/30 transition-colors duration-700" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <span className="text-primary text-xs uppercase tracking-[0.3em]">{p.cat}</span>
+                <h3 className="font-heading text-2xl md:text-3xl text-foreground mt-2 group-hover:translate-x-2 transition-transform duration-500">
+                  {p.title}
+                </h3>
               </div>
+              {/* Red corner accent */}
+              <div className="absolute top-0 right-0 w-0 h-0 border-t-[60px] border-t-primary border-l-[60px] border-l-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
           ))}
         </div>
