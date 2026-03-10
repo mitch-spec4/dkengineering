@@ -2,8 +2,17 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const partners = [
-  "VMI MIXING", "SVEBA DAHLEN", "RIELLO", "DYNASTY", "AMF BAKERY",
-  "BONGARD", "VARIMIXER", "VITELLA", "Z.MATIK", "JEROS", "DANZI FORNI",
+  { name: "VMI MIXING", url: "https://www.vmimixing.com" },
+  { name: "SVEBA DAHLEN", url: "https://www.sveba-dahlen.com" },
+  { name: "RIELLO", url: "https://www.riello.com" },
+  { name: "DYNASTY", url: "https://www.dynastyind.com" },
+  { name: "AMF BAKERY", url: "https://www.amfbakery.com" },
+  { name: "BONGARD", url: "https://www.bongard.fr" },
+  { name: "VARIMIXER", url: "https://www.varimixer.com" },
+  { name: "VITELLA", url: "https://www.vitella.it" },
+  { name: "Z.MATIK", url: "https://www.zmatik.com" },
+  { name: "JEROS", url: "https://www.jeros.com" },
+  { name: "DANZI FORNI", url: "https://www.danzi.it" },
 ];
 
 const PartnersSection = () => {
