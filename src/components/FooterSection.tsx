@@ -68,7 +68,7 @@ const FooterSection = () => {
           <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="block">
             <iframe
               title="DK Engineering Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.83!2d36.8969!3d-1.3197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11b58a0ddf6d%3A0x2ba01011e5e2b0a0!2sAirport%20North%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1710000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.4!2d36.8969!3d-1.3197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11b58a0ddf6d%3A0x2ba01011e5e2b0a0!2sDK%20Engineering%20Co%20Ltd!5e0!3m2!1sen!2ske!4v1710000000000"
               width="100%"
               height="300"
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
