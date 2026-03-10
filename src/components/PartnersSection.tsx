@@ -34,11 +34,16 @@ const PartnersSection = () => {
 
       <div className="overflow-hidden">
         <div className="marquee-track">
-          {[...partners, ...partners].map((name, i) => (
-            <div key={`${name}-${i}`} className="flex-shrink-0 flex items-center gap-16 mx-8">
-              <span className="font-heading text-3xl md:text-4xl text-muted-foreground/30 hover:text-foreground transition-colors whitespace-nowrap cursor-default">
-                {name}
-              </span>
+          {[...partners, ...partners].map((partner, i) => (
+            <div key={`${partner.name}-${i}`} className="flex-shrink-0 flex items-center gap-16 mx-8">
+              <a
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-heading text-3xl md:text-4xl text-muted-foreground/30 hover:text-primary transition-colors whitespace-nowrap cursor-pointer"
+              >
+                {partner.name}
+              </a>
               <span className="text-primary text-lg">✦</span>
             </div>
           ))}
