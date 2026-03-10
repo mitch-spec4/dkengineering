@@ -20,7 +20,7 @@ const FooterSection = () => {
     setVisitorCount(count);
   }, []);
 
-  const mapsUrl = "https://www.google.com/maps/search/DK+Engineering+Embakasi+North+Airport+Road+Nairobi+Kenya";
+  const mapsUrl = "https://www.google.com/maps/place/DK+Engineering+Co+Ltd/@-1.3197,36.8969,17z";
 
   return (
     <footer id="contact" className="section-padding border-t border-border">
