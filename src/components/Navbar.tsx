@@ -7,7 +7,9 @@ const links = [
   { label: "Home", href: "#home", route: "/" },
   { label: "About", href: "#about", route: "/#about" },
   { label: "Products", href: "#products", route: "/#products" },
+  { label: "Services", href: "#services", route: "/#services" },
   { label: "Projects", href: "#projects", route: "/#projects" },
+  { label: "Gallery", href: "#gallery", route: "/#gallery" },
   { label: "News", href: "#news", route: "/#news" },
 ];
 
