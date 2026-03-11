@@ -4,12 +4,19 @@ import { useState, useEffect } from "react";
 const VISITOR_KEY = "dk_visitor_count";
 const VISITED_KEY = "dk_has_visited";
 
+const socials = [
+  { label: "Facebook", url: "https://www.facebook.com/dkengineering" },
+  { label: "Twitter", url: "https://twitter.com/dkengineering" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/company/dk-engineering" },
+  { label: "Instagram", url: "https://www.instagram.com/dkengineering" },
+];
+
 const FooterSection = () => {
   const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
     const stored = localStorage.getItem(VISITOR_KEY);
-    let count = stored ? parseInt(stored, 10) : 1247; // seed with a base number
+    let count = stored ? parseInt(stored, 10) : 1247;
 
     if (!sessionStorage.getItem(VISITED_KEY)) {
       count += 1;
@@ -77,6 +84,21 @@ const FooterSection = () => {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </a>
+        </div>
+
+        {/* Social links */}
+        <div className="flex flex-wrap gap-6 mb-12">
+          {socials.map(s => (
+            <a
+              key={s.label}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1"
+            >
+              {s.label}
+            </a>
+          ))}
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-border">
