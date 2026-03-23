@@ -8,16 +8,31 @@ import heroBakery from "@/assets/hero-bakery.jpg";
 import heroRestaurant from "@/assets/hero-restaurant.jpg";
 import heroFruit from "@/assets/hero-fruit.jpg";
 import aboutImg from "@/assets/about-us.jpg";
+import productBakery from "@/assets/product-bakery.jpg";
+import productRestaurant from "@/assets/product-restaurant.jpg";
+import productFruit from "@/assets/product-fruit.jpg";
+import productKitchen from "@/assets/product-kitchen.jpg";
+import productJuice from "@/assets/product-juice.jpg";
+import serviceInstallation from "@/assets/service-installation.jpg";
+import serviceMaintenance from "@/assets/service-maintenance.jpg";
+import serviceCalibration from "@/assets/service-calibration.jpg";
 
 const gallery = [
   { src: projectBakery, caption: "NYS Gilgil Bakery Installation", cat: "Installation" },
+  { src: productBakery, caption: "Industrial Deck & Rack Ovens", cat: "Bakery" },
   { src: heroRestaurant, caption: "Commercial Kitchen Setup — Nairobi", cat: "Kitchen" },
+  { src: productRestaurant, caption: "Fast Food Kitchen Equipment", cat: "Kitchen" },
   { src: projectJuice, caption: "UoN Juice Processing Line", cat: "Processing" },
+  { src: productFruit, caption: "Fruit Sorting & Washing Line", cat: "Processing" },
+  { src: productKitchen, caption: "Hotel Catering Kitchen", cat: "Kitchen" },
+  { src: productJuice, caption: "Juice Filling Production Line", cat: "Processing" },
+  { src: serviceInstallation, caption: "Bakery Oven Installation", cat: "Installation" },
+  { src: serviceMaintenance, caption: "Equipment Maintenance Service", cat: "Installation" },
+  { src: serviceCalibration, caption: "Control Panel Calibration", cat: "Installation" },
   { src: heroBakery, caption: "Industrial Deck Oven — DPL Festive", cat: "Bakery" },
   { src: projectPotato, caption: "Sweet Potato Plant — Meru", cat: "Processing" },
   { src: heroFruit, caption: "Fruit Processing Facility Tour", cat: "Processing" },
   { src: aboutImg, caption: "DK Engineering Workshop", cat: "Workshop" },
-  { src: projectBakery, caption: "Rack Oven Commissioning", cat: "Installation" },
 ];
 
 const categories = ["All", "Installation", "Processing", "Kitchen", "Bakery", "Workshop"];
