@@ -220,15 +220,18 @@ const ProductsSection = () => {
                     Equipment We Supply
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {items[selectedIdx].equipment.map((eq) => (
-                      <div
-                        key={eq}
-                        className="border border-border p-4 hover:border-primary transition-colors group/eq"
-                      >
-                        <items[selectedIdx].icon className="w-5 h-5 text-muted-foreground group-hover/eq:text-primary transition-colors mb-2" />
-                        <span className="text-xs uppercase tracking-wider text-foreground">{eq}</span>
-                      </div>
-                    ))}
+                    {items[selectedIdx].equipment.map((eq) => {
+                      const Icon = items[selectedIdx].icon;
+                      return (
+                        <div
+                          key={eq}
+                          className="border border-border p-4 hover:border-primary transition-colors group/eq"
+                        >
+                          <Icon className="w-5 h-5 text-muted-foreground group-hover/eq:text-primary transition-colors mb-2" />
+                          <span className="text-xs uppercase tracking-wider text-foreground">{eq}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
