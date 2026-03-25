@@ -21,7 +21,6 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background images */}
       <AnimatePresence mode="wait">
         <motion.img
           key={idx}
@@ -35,12 +34,9 @@ const HeroSection = () => {
         />
       </AnimatePresence>
 
-      {/* Grain overlay */}
       <div className="absolute inset-0 bg-background/70" />
 
-      {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end max-w-[1600px] mx-auto px-6 md:px-12 pb-20">
-        {/* Counter */}
         <div className="flex items-center gap-4 mb-8">
           {slides.map((_, i) => (
             <button key={i} onClick={() => setIdx(i)} className="flex items-center gap-2 group">
@@ -85,10 +81,9 @@ const HeroSection = () => {
         </motion.a>
       </div>
 
-      {/* Side text */}
       <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-10 hidden md:block">
         <span className="font-heading text-xs tracking-[0.5em] text-muted-foreground uppercase [writing-mode:vertical-rl]">
-          Since 1986
+          Proudly African · Since 1986
         </span>
       </div>
     </section>

@@ -4,25 +4,25 @@ import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "DK Engineering transformed our entire bakery operation. The equipment quality and after-sales service are unmatched in the region.",
+    quote: "DK Engineering transformed our entire bakery operation here in Nairobi. The equipment quality and after-sales service are unmatched in the region. Asante sana!",
     author: "James Mwangi",
     role: "Operations Director",
     company: "Nairobi Bakeries Ltd",
   },
   {
-    quote: "From installation to maintenance, DK Engineering has been a reliable partner for over 10 years. Their juice processing line doubled our output.",
+    quote: "From installation to maintenance, DK Engineering has been our reliable partner for over 10 years. Their juice processing line doubled our mango output in Meru.",
     author: "Grace Wanjiku",
     role: "Plant Manager",
     company: "Fresh Valley Juices",
   },
   {
-    quote: "The NYS Gilgil installation was delivered on time and within budget. The team's professionalism and technical expertise is world-class.",
+    quote: "The NYS Gilgil installation was delivered on time and within budget. Their team understands the African market and delivers world-class solutions.",
     author: "Col. Peter Odhiambo",
     role: "Project Coordinator",
     company: "National Youth Service",
   },
   {
-    quote: "We needed a complete kitchen overhaul for our hotel chain. DK Engineering delivered beyond our expectations across all five locations.",
+    quote: "We needed a complete kitchen overhaul for our hotel chain across Kenya and Tanzania. DK Engineering delivered beyond our expectations at all five locations.",
     author: "Sarah Kimani",
     role: "CEO",
     company: "Highland Hotels Group",

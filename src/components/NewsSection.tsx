@@ -5,9 +5,9 @@ import projectJuice from "@/assets/project-juice.jpg";
 import projectPotato from "@/assets/project-potato.jpg";
 
 const news = [
-  { image: projectBakery, date: "NOV 2020", title: "DK PARTNERS WITH AMF BAKERY SYSTEMS", excerpt: "AMF announces strategic partnership to expand bakery solutions across East Africa." },
-  { image: projectJuice, date: "NOV 2020", title: "OUR INNOVATION TO CLIENTS", excerpt: "Developing an enviable reputation for delivering innovative food processing solutions." },
-  { image: projectPotato, date: "NOV 2020", title: "MANGO PROCESSING PLANT — KITUI", excerpt: "A fully equipped mango processing plant delivered in partnership with NETFUND." },
+  { image: projectBakery, date: "NOV 2020", title: "DK PARTNERS WITH AMF BAKERY SYSTEMS", excerpt: "AMF announces strategic partnership to expand bakery solutions across East Africa — from Kenya to Uganda, Rwanda, and beyond." },
+  { image: projectJuice, date: "NOV 2020", title: "INNOVATION FOR AFRICAN ENTREPRENEURS", excerpt: "Developing an enviable reputation for delivering innovative food processing solutions tailored for Africa's growing agribusiness sector." },
+  { image: projectPotato, date: "NOV 2020", title: "MANGO PROCESSING PLANT — KITUI", excerpt: "A fully equipped mango processing plant delivered in Kitui County in partnership with NETFUND, creating jobs for local communities." },
 ];
 
 const NewsSection = () => {
