@@ -11,32 +11,32 @@ const showcases = [
   {
     image: enjoyBakery,
     category: "Bakery Equipment",
-    title: "THE JOY OF FRESH BREAD",
-    desc: "From our ovens to your table — families across East Africa enjoy fresh pastries and bread baked on DK equipment every day.",
+    title: "WARM BREAD, WARM HEARTS",
+    desc: "From our ovens to the family table — across Kenya and East Africa, mothers break bread baked on DK equipment every morning. Nourishing communities, one loaf at a time.",
   },
   {
     image: enjoyRestaurant,
     category: "Restaurant Equipment",
-    title: "MOMENTS SHARED OVER FOOD",
-    desc: "Our fast food and restaurant equipment powers kitchens that bring people together over incredible meals.",
+    title: "KARIBU, LET'S EAT TOGETHER",
+    desc: "Our restaurant equipment powers the nyama choma grills, the chapati hotplates, and the vibrant kitchens where Africans gather to share stories and meals.",
   },
   {
     image: enjoyFruits,
     category: "Fruit Processing",
-    title: "FARM-FRESH TO MARKET",
-    desc: "Processing equipment that preserves the natural goodness — delivering fresh produce to shelves nationwide.",
+    title: "AFRICA'S HARVEST, PRESERVED",
+    desc: "From Meru's mangoes to Kitui's oranges — our processing lines help African farmers turn abundant harvests into year-round income and nutrition.",
   },
   {
     image: enjoyCatering,
     category: "Commercial Kitchen",
-    title: "ELEGANT HOSPITALITY",
-    desc: "Hotels and institutions serve thousands daily with commercial kitchen setups designed and installed by DK Engineering.",
+    title: "AFRICAN HOSPITALITY AT SCALE",
+    desc: "Hotels from Nairobi to Mombasa serve thousands of guests daily with commercial kitchens designed and installed by DK Engineering — true African hospitality powered by world-class equipment.",
   },
   {
     image: enjoyJuice,
     category: "Juice Processing",
-    title: "REFRESHMENT IN EVERY SIP",
-    desc: "From orchard to bottle — our juice processing lines create the refreshing beverages that quench East Africa's thirst.",
+    title: "FRESH JUICE, AFRICAN SPIRIT",
+    desc: "From the orchards of the Rift Valley to the streets of Nairobi — our juice lines create the refreshing tropical beverages that quench Africa's thirst.",
   },
 ];
 
@@ -56,7 +56,7 @@ const ShowcaseSection = () => {
           <span className="text-primary text-xs uppercase tracking-[0.3em]">Impact</span>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -73,11 +73,14 @@ const ShowcaseSection = () => {
           >
             <Sparkles className="w-6 h-6 text-primary shrink-0 mt-1" />
             <p className="text-muted-foreground text-base leading-relaxed">
-              Every piece of equipment we deliver creates a ripple effect — enabling businesses to thrive, 
-              communities to enjoy quality products, and families to share unforgettable moments.
+              Every piece of equipment we deliver creates a ripple across Africa — enabling businesses to thrive, 
+              communities to eat well, and families to share unforgettable moments around the table.
             </p>
           </motion.div>
         </div>
+
+        {/* African pattern divider */}
+        <div className="african-border mb-12" />
 
         {/* Bento-style grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -94,11 +97,11 @@ const ShowcaseSection = () => {
               <img
                 src={item.image}
                 alt={item.title}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
               
-              {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <div className="flex items-center gap-2 mb-2">
                   <Heart className="w-3 h-3 text-primary" />
@@ -112,7 +115,6 @@ const ShowcaseSection = () => {
                 </p>
               </div>
 
-              {/* Red corner accent */}
               <div className="absolute top-0 right-0 w-0 h-0 border-t-[50px] border-t-primary border-l-[50px] border-l-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
           ))}
