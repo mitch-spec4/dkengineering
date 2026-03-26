@@ -19,6 +19,11 @@ const HeroSection = () => {
     return () => clearInterval(t);
   }, []);
 
+  const scrollToProducts = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.querySelector("#products")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="home" className="relative h-screen min-h-[700px] overflow-hidden">
       <AnimatePresence mode="wait">
@@ -67,6 +72,7 @@ const HeroSection = () => {
 
         <motion.a
           href="#products"
+          onClick={scrollToProducts}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}

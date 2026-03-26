@@ -29,7 +29,7 @@ const FloatingButtons = () => {
       </AnimatePresence>
 
       <motion.a
-        href="https://wa.me/254700000000?text=Hello%20DK%20Engineering%2C%20I%20have%20an%20inquiry"
+        href="https://wa.me/254722782627?text=Hello%20DK%20Engineering%2C%20I%20have%20an%20inquiry"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0 }}

@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChefHat, UtensilsCrossed, Apple, Soup, GlassWater, ArrowRight, X } from "lucide-react";
+import { ChefHat, UtensilsCrossed, Apple, Soup, GlassWater, ArrowRight, ArrowLeft, X } from "lucide-react";
 import productBakery from "@/assets/product-bakery.jpg";
 import productRestaurant from "@/assets/product-restaurant.jpg";
 import productFruit from "@/assets/product-fruit.jpg";
@@ -60,6 +60,9 @@ const ProductsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+
+  const goPrev = () => setSelectedIdx((p) => (p !== null ? (p - 1 + items.length) % items.length : null));
+  const goNext = () => setSelectedIdx((p) => (p !== null ? (p + 1) % items.length : null));
 
   return (
     <>
@@ -195,7 +198,22 @@ const ProductsSection = () => {
               <X className="w-5 h-5 text-foreground" />
             </button>
 
+            {/* Prev / Next arrows */}
+            <button
+              className="fixed left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all z-[110]"
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+            >
+              <ArrowLeft className="w-5 h-5 text-foreground" />
+            </button>
+            <button
+              className="fixed right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all z-[110]"
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+            >
+              <ArrowRight className="w-5 h-5 text-foreground" />
+            </button>
+
             <motion.div
+              key={selectedIdx}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
@@ -221,12 +239,10 @@ const ProductsSection = () => {
 
               <div className="african-border mb-8" />
 
-              {/* Description */}
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-8">
                 {items[selectedIdx].fullDesc}
               </p>
 
-              {/* Equipment Grid */}
               <h4 className="font-heading text-lg text-foreground mb-4 flex items-center gap-3">
                 <span className="h-px w-8 bg-primary" />
                 Equipment We Supply
@@ -246,7 +262,17 @@ const ProductsSection = () => {
                 })}
               </div>
 
-              {/* CTA */}
+              {/* Navigation dots */}
+              <div className="flex items-center justify-center gap-3 mb-8">
+                {items.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedIdx(i)}
+                    className={`w-2 h-2 rounded-full transition-all ${i === selectedIdx ? "bg-primary w-6" : "bg-border hover:bg-muted-foreground"}`}
+                  />
+                ))}
+              </div>
+
               <a
                 href={`mailto:michchore@gmail.com?subject=Inquiry: ${items[selectedIdx].title}&body=I would like to inquire about your ${items[selectedIdx].title.toLowerCase()} range.`}
                 className="inline-flex items-center gap-3 border border-primary text-primary px-6 py-3 text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all duration-300"

@@ -1,16 +1,30 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send } from "lucide-react";
+import { Send, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const InquirySection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const body = `Name: ${form.name}%0AEmail: ${form.email}%0APhone: ${form.phone}%0ASubject: ${form.subject}%0A%0A${encodeURIComponent(form.message)}`;
     window.location.href = `mailto:michchore@gmail.com?subject=${encodeURIComponent(form.subject || "Inquiry from DK Engineering Website")}&body=${body}`;
+    
+    setSent(true);
+    toast({
+      title: "Inquiry Ready!",
+      description: "Your email client should open with the inquiry details pre-filled. Just hit send!",
+    });
+    
+    setTimeout(() => {
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      setSent(false);
+    }, 4000);
   };
 
   return (
@@ -34,66 +48,78 @@ const InquirySection = () => {
           HAVE A<br /><span className="text-primary red-glow">QUESTION?</span>
         </motion.h2>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-6 max-w-4xl"
-        >
-          <input
-            type="text"
-            placeholder="Your Name *"
-            required
-            maxLength={100}
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-          />
-          <input
-            type="email"
-            placeholder="Email Address *"
-            required
-            maxLength={255}
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-          />
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            maxLength={20}
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            maxLength={200}
-            value={form.subject}
-            onChange={(e) => setForm({ ...form, subject: e.target.value })}
-            className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
-          />
-          <textarea
-            placeholder="Your Message *"
-            required
-            maxLength={1000}
-            rows={5}
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="md:col-span-2 bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
-          />
-          <div className="md:col-span-2">
-            <button
-              type="submit"
-              className="group inline-flex items-center gap-3 border border-primary px-8 py-4 text-xs uppercase tracking-[0.2em] text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-            >
-              <Send className="w-4 h-4" />
-              Send Inquiry
-            </button>
-          </div>
-        </motion.form>
+        {sent ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center justify-center py-20 gap-4"
+          >
+            <CheckCircle className="w-16 h-16 text-primary" />
+            <p className="font-heading text-2xl text-foreground">Inquiry Sent!</p>
+            <p className="text-muted-foreground text-sm">Check your email client to complete sending.</p>
+          </motion.div>
+        ) : (
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 40 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="grid md:grid-cols-2 gap-6 max-w-4xl"
+          >
+            <input
+              type="text"
+              placeholder="Your Name *"
+              required
+              maxLength={100}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
+            />
+            <input
+              type="email"
+              placeholder="Email Address *"
+              required
+              maxLength={255}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
+            />
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              maxLength={20}
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
+            />
+            <input
+              type="text"
+              placeholder="Subject"
+              maxLength={200}
+              value={form.subject}
+              onChange={(e) => setForm({ ...form, subject: e.target.value })}
+              className="bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
+            />
+            <textarea
+              placeholder="Your Message *"
+              required
+              maxLength={1000}
+              rows={5}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="md:col-span-2 bg-transparent border border-border px-5 py-4 text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
+            />
+            <div className="md:col-span-2">
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-3 border border-primary px-8 py-4 text-xs uppercase tracking-[0.2em] text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Send className="w-4 h-4" />
+                Send Inquiry
+              </button>
+            </div>
+          </motion.form>
+        )}
       </div>
     </section>
   );
