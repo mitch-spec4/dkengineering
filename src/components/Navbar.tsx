@@ -30,10 +30,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const scrollTo = (href: string) => {
+    setOpen(false);
     if (isHome) {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   };
 
@@ -57,7 +60,7 @@ const Navbar = () => {
                 href={l.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(l.href);
+                  scrollTo(l.href);
                 }}
                 className="text-xs uppercase tracking-[0.2em] text-foreground/70 hover:text-foreground transition-colors"
               >
@@ -79,7 +82,16 @@ const Navbar = () => {
           >
             Shop
           </Link>
-          <a href="#contact" className="text-xs uppercase tracking-[0.2em] border border-foreground/30 px-6 py-2.5 text-foreground hover:bg-foreground hover:text-background transition-all">
+          <a
+            href={isHome ? "#inquiry" : "/#inquiry"}
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                scrollTo("#inquiry");
+              }
+            }}
+            className="text-xs uppercase tracking-[0.2em] border border-foreground/30 px-6 py-2.5 text-foreground hover:bg-foreground hover:text-background transition-all"
+          >
             Contact
           </a>
         </div>
@@ -97,14 +109,45 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             className="lg:hidden fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-8"
           >
-            {links.map((l) => (
-              <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="font-heading text-4xl text-foreground hover:text-primary transition-colors">
-                {l.label}
-              </a>
-            ))}
+            {links.map((l) =>
+              isHome ? (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(l.href);
+                  }}
+                  className="font-heading text-4xl text-foreground hover:text-primary transition-colors"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.label}
+                  to={l.route}
+                  onClick={() => setOpen(false)}
+                  className="font-heading text-4xl text-foreground hover:text-primary transition-colors"
+                >
+                  {l.label}
+                </Link>
+              )
+            )}
             <Link to="/shop" onClick={() => setOpen(false)} className="font-heading text-4xl text-foreground hover:text-primary transition-colors">
               Shop
             </Link>
+            <a
+              href={isHome ? "#inquiry" : "/#inquiry"}
+              onClick={(e) => {
+                if (isHome) {
+                  e.preventDefault();
+                  scrollTo("#inquiry");
+                }
+              }}
+              className="font-heading text-4xl text-primary"
+            >
+              Contact
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
