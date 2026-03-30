@@ -57,7 +57,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           transition={{ delay: 1 }}
           className="text-muted-foreground text-[10px] uppercase tracking-[0.5em] block mt-4"
         >
-          Since 1986
+          
         </motion.span>
       </div>
     </motion.div>

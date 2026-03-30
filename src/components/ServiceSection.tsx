@@ -24,12 +24,12 @@ const services = [
     desc: "Scheduled maintenance programs to maximize equipment lifespan and minimize downtime.",
     image: serviceMaintenance,
   },
-  {
-    icon: Truck,
-    title: "SPARE PARTS DELIVERY",
-    desc: "Fast delivery of genuine spare parts from our extensive warehouse inventory.",
-    image: null,
-  },
+  // {
+  //   icon: Truck,
+  //   title: "SPARE PARTS DELIVERY",
+  //   desc: "Fast delivery of genuine spare parts from our extensive warehouse inventory.",
+  //   image: null,
+  // },
   {
     icon: HeadphonesIcon,
     title: "24/7 TECHNICAL SUPPORT",

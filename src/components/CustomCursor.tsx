@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import "./CustomCursor.css";
 
 const CustomCursor = () => {
   const dot = useRef<HTMLDivElement>(null);
@@ -6,10 +7,7 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      if (dot.current) {
-        dot.current.style.left = `${e.clientX}px`;
-        dot.current.style.top = `${e.clientY}px`;
-      }
+    
       if (ring.current) {
         ring.current.style.left = `${e.clientX}px`;
         ring.current.style.top = `${e.clientY}px`;
@@ -24,8 +22,12 @@ const CustomCursor = () => {
 
   return (
     <>
-      <div ref={dot} className="custom-cursor hidden md:block" />
-      <div ref={ring} className="custom-cursor-ring hidden md:block" />
+      <div
+        ref={ring}
+        className="custom-cursor-ring hidden md:flex items-center justify-center pointer-events-none select-none dk-cursor-ring"
+      >
+        DK
+      </div>
     </>
   );
 };
