@@ -1,6 +1,5 @@
 import { MapPin, Phone, Mail, ArrowUpRight, Users } from "lucide-react";
 import { useState, useEffect } from "react";
-import "./FooterSection.css";
 
 const VISITOR_KEY = "dk_visitor_count";
 const VISITED_KEY = "dk_has_visited";
